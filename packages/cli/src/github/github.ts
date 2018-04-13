@@ -193,7 +193,10 @@ export class Github {
 
   async getBranch(branchName: string): Promise<CodeSource> {
     // GitHubApi.Branch is not correct.
-    type ActualBranch = { name: string; commit: {sha: string;}; };
+    interface ActualBranch {
+      name: string;
+      commit: {sha: string};
+    }
     const branch: ActualBranch = await this._github.repos.getBranch(
         {owner: this._owner, repo: this._repo, branch: branchName});
     return {
