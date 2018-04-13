@@ -52,7 +52,8 @@ suite('integration tests', function() {
 
       // TODO(bicknellr): Remove the `--module-resolution=node` argument once
       // `polymer test` passes them in correctly
-      await runCommand(binPath, ['test', '--module-resolution=node'], {cwd: dir});
+      await runCommand(
+          binPath, ['test', '--module-resolution=node'], {cwd: dir});
     });
 
     skipOnWindows('test the Polymer 1.x application template', async () => {
@@ -113,12 +114,8 @@ suite('integration tests', function() {
     });
 
     test('test the 3.0 "shop" template', async () => {
-      const ShopGenerator = createGithubGenerator({
-        owner: 'Polymer',
-        repo: 'shop',
-        githubToken,
-        branch: '3.0'
-      });
+      const ShopGenerator = createGithubGenerator(
+          {owner: 'Polymer', repo: 'shop', githubToken, branch: '3.0'});
 
 
       // https://github.com/Polymer/tools/issues/137 for filling this out more.
